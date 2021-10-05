@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:windowSoftInputMode="adjustPan"
+    tools:context=".MainActivity">
+
+    <include
+        layout="@layout/layout_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/llMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="3">
+
+        <include
+            layout="@layout/recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textViewOperation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_style"
+            android:layout_gravity="center|top"
+            android:padding="4dp"
+            android:layout_margin="4dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <include
+            layout="@layout/second_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/answer_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textIsSelectable="true"
+        android:background="@drawable/edittext_style"
+        android:visibility="gone"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="5"
+            android:verticalSpacing="4dp"
+            android:horizontalSpacing="4dp"
+            android:layout_gravity="bottom|center">
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:text="@string/btn_7"
+                android:background="@drawable/button_style"
+                android:contentDescription="@string/btn_7" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:text="@string/btn_8"
+                android:background="@drawable/button_style"/>
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:text="@string/btn_9"
+                android:background="@drawable/button_style"/>
+
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_margin="4dp"
+                android:text="@string/btn_clear"
+                android:layout_gravity="fill"
+                android:layout_columnSpan="2"
+                android:background="@drawable/clear2"
+                android:contentDescription="@string/btn_clear"/>
+        </GridLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

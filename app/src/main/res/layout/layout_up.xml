@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llUp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:windowSoftInputMode="adjustPan">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:autofillHints=""
+        android:gravity="center"
+        android:hint="@string/textview1"
+        android:textColorHint="@color/textColorHint"
+        android:maxLines="1"
+        android:textSize="13sp"
+        android:background="@drawable/edittext_gray_style"
+        android:clickable="true"
+        android:textIsSelectable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:autofillHints=""
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:hint="@string/textview2"
+        android:textColorHint="@color/textColorHint"
+        android:maxLines="1"
+        android:textSize="13sp"
+        android:background="@drawable/edittext_style"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:textIsSelectable="true"
+        android:focusable="true" />
+
+</LinearLayout>

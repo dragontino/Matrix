@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Matrix</string>
+    <string name="textview1">Введите количество строк</string>
+    <string name="textview2">Введите количество столбцов</string>
+    <string name="button1">Очистить поле</string>
+    <string name="hint1">Введите размеры матрицы</string>
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    <string name="btn_plus">+</string>
+    <string name="btn_minus">—</string>
+    <string name="btn_multi">*</string>
+    <string name="btn_deg">^</string>
+    <string name="btn_equal">=</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_div">/</string>
+    <string name="btn_clear">clear</string>
+    <string name="btn_go"> </string>
+    <string name="todo">TODO</string>
+    <string name="menu_item_clear_all">Очистить экран</string>
+    <string name="determinant_double">Определитель: %1$f</string>
+    <string name="determinant_int">Определитель: %1$d</string>
+    <string name="sumAndSub">%1$s матриц    =\n</string>
+    <string name="degMatrix">Матрица в %1$d степени =\n</string>
+</resources>
