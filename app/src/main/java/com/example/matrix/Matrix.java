@@ -9,7 +9,6 @@ import androidx.annotation.StringRes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Matrix {
 
@@ -171,15 +170,11 @@ public class Matrix {
         return matrix[i][j];
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
     public double[][] getMatrix() {
         return matrix;
     }
 
-    public boolean equals(Matrix matrix) {
+    public boolean equals(@NotNull Matrix matrix) {
         if (this.width != matrix.width || this.height != matrix.height || this.weight != matrix.weight)
             return false;
 
