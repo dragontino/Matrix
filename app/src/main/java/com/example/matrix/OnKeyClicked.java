@@ -2,6 +2,7 @@ package com.example.matrix;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,7 +86,7 @@ public class OnKeyClicked {
 
         if (!isOperationView()) return;
         if (operationRes != R.string.btn_plus && operationRes != R.string.btn_minus &&
-                operationRes != R.string.btn_multi && operationRes != R.string.btn_deg) return;
+                operationRes != R.string.btn_multi && operationRes != R.string.btn_deg && operationRes != R.string.btn_equal) return;
 
         getCurrentTextView().setText(operationRes);
     }
@@ -101,7 +102,7 @@ public class OnKeyClicked {
         if (isLastIndex() && !id.contains(OPERATION_VIEW))
             this.id.add(OPERATION_VIEW);
 
-        else if (isLastIndex()) {
+        else if (isLastIndex() && !first_matrix.equals(second_matrix)) {
             if (!findAnswer())
                 WARNING = true;
             return;
@@ -115,7 +116,7 @@ public class OnKeyClicked {
         TextView textView = getCurrentTextView();
 
         if (textView == null) {
-            if (first_matrix.deleteOneSymbol(currentId)) return;
+            if (getCurrentMatrix().deleteOneSymbol(currentId)) return;
 
             if (currentPosInArr == 2) {
                 first_matrix = null;
@@ -178,6 +179,8 @@ public class OnKeyClicked {
         this.currentId = newId;
         this.currentPosInArr = id.lastIndexOf(this.currentId);
         if (this.currentPosInArr == -1) return;
+        if (newId == R.id.textView2)
+            updateID();
 
         if (getCurrentMatrix() != null && isMatrix())
             getCurrentMatrix().setNewPosition(newId);
@@ -210,6 +213,10 @@ public class OnKeyClicked {
 
     @SuppressLint("NonConstantResourceId")
     public String getStringAnswer() {
+
+        if (linearMatrix == null)
+            linearMatrix = new LinearMatrix(N2);
+
         StringBuilder answer = new StringBuilder();
         String type = "";
         switch (operation) {
@@ -257,6 +264,8 @@ public class OnKeyClicked {
         TextView textView = getCurrentTextView();
         if (textView == null) return true;
 
+        Log.d("OnKeyClicked", id.toString());
+
         String text = textView.getText().toString();
         if (!checkText(text)) return false;
 
@@ -290,8 +299,12 @@ public class OnKeyClicked {
             for (int id = 0; id < N2 * M2; id++)
                 this.id.add(id);
         }
-        else if (currentId == OPERATION_VIEW)
+        else if (currentId == OPERATION_VIEW) {
             setOperation(text);
+
+            for (int id = 0; id < N2 * M2; id++)
+                this.id.add(id);
+        }
 //        else
 //            first_matrix.set(currentId, Double.parseDouble(text));
 
@@ -338,6 +351,7 @@ public class OnKeyClicked {
                 this.id.add(R.id.textView2);
                 N2 = M;
                 ((TextView) mActivity.findViewById(R.id.textView1)).setText(String.valueOf(N2));
+                ((TextView) mActivity.findViewById(R.id.textView1)).setText("");
                 this.operation = R.string.btn_multi;
                 break;
             case "^":

@@ -168,8 +168,7 @@ public class MainActivity extends AppCompatActivity
                 holder.setBackground(R.drawable.edittext_gray_style);
             else
                 holder.setBackground(R.drawable.edittext_style);
-            if (clicked.getCurrentMatrix().getWeight() == 0 ||
-                    clicked.getCurrentMatrix().getWeight() <= position) {
+            if (clicked.getCurrentId() < position) {
                 holder.bindMatrix("  ");
             }
             else {
@@ -956,13 +955,17 @@ public class MainActivity extends AppCompatActivity
             case Keyboard.ID_MINUS:
             case Keyboard.ID_MULTI:
             case Keyboard.ID_DEG:
+            case Keyboard.ID_EQUAL:
                 clicked.appendOperation(buttonTextRes);
                 break;
 
             case Keyboard.ID_GO:
                 clicked.go();
-                if (clicked.getCurrentId() == 0)
+                if (clicked.positionInArray() == 2)
                     updateUI(clicked.getN(), clicked.getM());
+
+                else if (clicked.getCurrentId() == 0)
+                    updateUI(clicked.getM2(), clicked.getN2());
 
                 else if (clicked.isMatrix()) {
                     Objects.requireNonNull(currentRecyclerView().getAdapter())
@@ -979,7 +982,7 @@ public class MainActivity extends AppCompatActivity
                     updateAnswer();
                 }
 
-                if (clicked.isLastIndex() && clicked.isSecondMatrix()) {
+                if (clicked.isSecondMatrix()) {
                     if (OnKeyClicked.WARNING)
                         textAnswer.setText("К сожалению, мы не можем решить данную задачу :(");
                     else
@@ -991,17 +994,18 @@ public class MainActivity extends AppCompatActivity
 
                 case Keyboard.ID_CLEAR:
 
-                    if (clicked.isOperationView())
+                    if (clicked.isOperationView() && operation.getText().equals(""))
                         operation.setVisibility(View.GONE);
 
                     clicked.back();
                     if (clicked.isMatrix()) {
+                        Toast.makeText(this, "проверка = " + clicked.positionInArray(), Toast.LENGTH_SHORT).show();
                         Objects.requireNonNull(currentRecyclerView().getAdapter())
                                 .notifyItemChanged(clicked.getCurrentId());
                         if (!clicked.isLastIndex())
                             currentRecyclerView().getAdapter().notifyItemChanged(clicked.getCurrentId() + 1);
                     }
-                    else if (clicked.isOperationView() || clicked.positionInArray() < 2) {
+                    if (clicked.isOperationView() || clicked.positionInArray() < 2) {
                         updateUI(0, 1);
                     }
 

@@ -99,6 +99,7 @@ public class Cortege<A, B> {
 
     public void clear() {
         set(null, null);
+        size--;
     }
 
     //если size == 1, то удаляется first или second

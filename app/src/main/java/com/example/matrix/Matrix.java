@@ -9,6 +9,7 @@ import androidx.annotation.StringRes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Matrix {
 
@@ -176,6 +177,16 @@ public class Matrix {
 
     public double[][] getMatrix() {
         return matrix;
+    }
+
+    public boolean equals(Matrix matrix) {
+        if (this.width != matrix.width || this.height != matrix.height || this.weight != matrix.weight)
+            return false;
+
+        for (int i = 0; i < this.weight; i++)
+            if (this.get(i) != matrix.get(i)) return false;
+
+        return true;
     }
 
 
