@@ -77,14 +77,18 @@ public class Matrix {
         int second = coefficients.getSecondValue(position);
         set(position, elem * first + value / second);
 
+        if (first == 1)
+            coefficients.setFirstValue(10);
         if (second != 1)
             coefficients.setSecondValue(position, second * 10);
     }
 
     public void appendSpecSymbol(int position, @StringRes int stringId) {
         if (position >= weight || weight == 0) {
-            if (stringId == R.string.btn_minus)
+            if (stringId == R.string.btn_minus) {
                 add(-1);
+                coefficients.set(position, 1, coefficients.getSecondValue());
+            }
             return;
         }
         if (stringId == R.string.btn_dot) {

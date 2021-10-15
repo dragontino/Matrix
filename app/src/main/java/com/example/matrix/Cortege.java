@@ -97,13 +97,13 @@ public class Cortege<A, B> {
             add(first, second);
     }
 
-    public void clear() {
+    public void delete() {
         set(null, null);
         size--;
     }
 
     //если size == 1, то удаляется first или second
-    public void clear(int index) {
+    public void delete(int index) {
         if (size == 1) {
             if (index == 0)
                 setFirstValue(null);
@@ -115,7 +115,7 @@ public class Cortege<A, B> {
 
     public void clearAll() {
         for (int i = 0; i < size; i++)
-            clear(i);
+            delete(i);
     }
 
     //возвращает количество ненулевых элементов по заданному индексу

@@ -84,7 +84,11 @@ public class OnKeyClicked {
 
     public void appendOperation(@StringRes int operationRes) {
 
-        if (!isOperationView()) return;
+        if (!isOperationView()) {
+            if (operationRes == R.string.btn_minus)
+                getCurrentMatrix().appendSpecSymbol(currentId, operationRes);
+            return;
+        }
         if (operationRes != R.string.btn_plus && operationRes != R.string.btn_minus &&
                 operationRes != R.string.btn_multi && operationRes != R.string.btn_deg && operationRes != R.string.btn_equal) return;
 
