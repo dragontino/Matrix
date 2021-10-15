@@ -51,13 +51,10 @@ public class MainActivity extends AppCompatActivity
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Window window = getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.WHITE);
-        window.getDecorView().setBackgroundColor(Color.WHITE);
-        Objects.requireNonNull(getSupportActionBar())
-                .setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.white));
+//        Window window = getWindow();
+//        window.getDecorView().setBackgroundColor(Color.WHITE);
+//        Objects.requireNonNull(getSupportActionBar())
+//                .setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.white));
 
         SpannableString title = new SpannableString(getTitle());
         title.setSpan(
