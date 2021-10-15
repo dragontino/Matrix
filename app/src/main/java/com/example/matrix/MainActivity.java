@@ -11,8 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +21,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,11 +47,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout./*recycler_view*/activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-//        Window window = getWindow();
-//        window.getDecorView().setBackgroundColor(Color.WHITE);
-//        Objects.requireNonNull(getSupportActionBar())
-//                .setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.white));
 
         SpannableString title = new SpannableString(getTitle());
         title.setSpan(
@@ -170,16 +162,21 @@ public class MainActivity extends AppCompatActivity
                 holder.setBackground(R.drawable.edittext_gray_style);
             else
                 holder.setBackground(R.drawable.edittext_style);
-            if (clicked.getCurrentId() < position) {
-                holder.bindMatrix("  ");
-            }
-            else {
+
+            if (clicked.getCurrentId() >= position) {
                 double val = clicked.getCurrentMatrix().get(position);
-                holder.bindMatrix(
+                if (clicked.getCurrentMatrix().isLessZero(position) && val == 0)
+                    holder.bindMatrix(R.string.btn_minus);
+                else if (val == 0)
+                    holder.bindMatrix("\t");
+                else
+                    holder.bindMatrix(
                         val % 1 == 0 && !clicked.isDotClicked ?
                                 " " + (int) val + " " :
                                 " " + val + " "
-                );
+                    );
+            } else {
+                holder.bindMatrix("\t");
             }
 
             holder.setOnClickListener(v -> {
@@ -215,6 +212,10 @@ public class MainActivity extends AppCompatActivity
                 return;
             }
             textView.setText(text);
+        }
+
+        public void bindMatrix(@StringRes int resId) {
+            textView.setText(resId);
         }
 
         public void setBackground(@DrawableRes int resId) {

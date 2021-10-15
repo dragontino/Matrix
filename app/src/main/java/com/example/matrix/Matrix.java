@@ -84,8 +84,10 @@ public class Matrix {
 
     public void appendSpecSymbol(int position, @StringRes int stringId) {
         if (position >= weight || weight == 0) {
-            if (stringId == R.string.btn_minus)
-                add(-1);
+            if (stringId == R.string.btn_minus) {
+                add(0);
+                coefficients.setSecondValue(position, -coefficients.getSecondValue(position));
+            }
             return;
         }
         if (stringId == R.string.btn_dot) {
@@ -108,6 +110,12 @@ public class Matrix {
             weight = position + 1;
             coefficients.set(position, 10, 1);
         }
+    }
+
+    public boolean isLessZero(int position) {
+        if (position >= coefficients.size())
+            return false;
+        return coefficients.getSecondValue(position) < 0;
     }
 
 //    public void setSize(int newHeight, int newWidth) {

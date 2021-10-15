@@ -3,7 +3,6 @@ package com.example.matrix;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 public class OnKeyClicked {
 
     public static boolean WARNING = false;
-    public static boolean MINUS = false;
 
     private static final int OPERATION_VIEW = R.id.textViewOperation;
 
