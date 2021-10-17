@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity
         textView2.setOnClickListener(this);
         textAnswer = findViewById(R.id.answer_text_view);
 
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().setStatusBarColor(Color.WHITE);
+
         operation = findViewById(R.id.textViewOperation);
         operation.setText("  ");
 
